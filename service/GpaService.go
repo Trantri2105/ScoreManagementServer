@@ -155,17 +155,21 @@ func (g *gpaService) calculateGpa(ctx context.Context, courseResults []model.Cou
 		//}
 		//gpaResponse.PredictedGpa = sum / float64(len(semester))
 
-		var semesterResult []float64
-		for i := range semester {
-			semesterResult = append(semesterResult, semester[i].Gpa)
-		}
-		for {
-			if len(semesterResult) >= 4 {
-				break
+		if len(semester) == 0 {
+			gpaResponse.PredictedGpa = 0
+		} else {
+			var semesterResult []float64
+			for i := range semester {
+				semesterResult = append(semesterResult, semester[i].Gpa)
 			}
-			semesterResult = append(semesterResult, semester[len(semester)-1].Gpa)
+			for {
+				if len(semesterResult) >= 4 {
+					break
+				}
+				semesterResult = append(semesterResult, semester[len(semester)-1].Gpa)
+			}
+			gpaResponse.PredictedGpa = g.GetPredictedGpa(ctx, semesterResult)
 		}
-		gpaResponse.PredictedGpa = g.GetPredictedGpa(ctx, semesterResult)
 	}
 	return gpaResponse, nil
 }
