@@ -17,6 +17,7 @@ import (
 	"github.com/redis/go-redis/v9"
 	"log"
 	"net/http"
+	"os"
 )
 
 var authMiddleware *middleware.Middleware
@@ -85,7 +86,7 @@ func encodeGetStudentGpaRequestResponse(_ context.Context, w http.ResponseWriter
 	return json.NewEncoder(w).Encode(response)
 }
 func NewHTTPServer(db *sql.DB, redisClient *redis.Client) *gin.Engine {
-	c, err := client.NewClientEndpoint("localhost:5000")
+	c, err := client.NewClientEndpoint(os.Getenv("PREDICTOR_HOST"))
 	if err != nil {
 		log.Fatal()
 	}

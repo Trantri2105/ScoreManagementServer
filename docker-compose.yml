@@ -1,0 +1,56 @@
+services:
+  server:
+    image: trantri10503/score-management-server:latest
+    ports:
+      - 8080:8080
+    networks:
+      - score-network
+    environment:
+      POSTGRES_HOST: postgres
+      REDIS_HOST: redis:6379
+      PREDICTOR_HOST: predictor:5000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      predictor:
+        condition: service_started
+
+
+  predictor:
+    image: trantri10503/gpa-predictor:latest
+    ports:
+      - 5000:5000
+    networks:
+      - score-network
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: score
+    networks:
+      - score-network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U admin -d score" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - ./table.sql:/docker-entrypoint-initdb.d/init.sql
+
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+    networks:
+      - score-network
+
+networks:
+  score-network:
+    driver: bridge
+    name: score-network

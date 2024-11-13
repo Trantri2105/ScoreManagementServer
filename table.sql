@@ -32,40 +32,40 @@ CREATE table component_scores(
     score_weight DOUBLE PRECISION,
     score DOUBLE PRECISION
 );
-INSERT INTO courses (id, name, number_of_credit) VALUES
-('CSE101', 'Introduction to Computer Science', 3),
-('MAT201', 'Calculus II', 4),
-('PHY301', 'Physics I', 4),
-('ENG101', 'English Literature', 2),
-('HIS202', 'World History', 3);
-INSERT INTO course_results (course_id, student_id, semester_number, academic_year) VALUES
-('CSE101', '123457', 1, '2023-2024'),
-('MAT201', '123457', 1, '2023-2024'),
-('PHY301', '123457', 1, '2023-2024'),
-('ENG101', '123457', 1, '2023-2024'),
-('HIS202', '123457', 1, '2023-2024');
-
-INSERT INTO component_scores (course_result_id, name, score_weight, score) VALUES
-(1, 'Midterm Exam', 0.4, 8.0),
-(1, 'Final Exam', 0.6, 9.0);
-
-INSERT INTO component_scores (course_result_id, name, score_weight, score) VALUES
-(2, 'Midterm Exam', 0.3, 7.0),
-(2, 'Final Exam', 0.7, 8.0);
-
-INSERT INTO component_scores (course_result_id, name, score_weight, score) VALUES
-(3, 'Lab Work', 0.2, 8.0),
-(3, 'Midterm Exam', 0.3, 7.0),
-(3, 'Final Exam', 0.5, 8.0);
-
-INSERT INTO component_scores (course_result_id, name, score_weight, score) VALUES
-(4, 'Midterm Essay', 0.5, 7.0),
-(4, 'Final Essay', 0.5, 8.0);
-
-INSERT INTO component_scores (course_result_id, name, score_weight, score) VALUES
-(5, 'Quiz', 0.2, 7.0),
-(5, 'Midterm Exam', 0.4, 7.0),
-(5, 'Final Exam', 0.4, 7.0);
+-- INSERT INTO courses (id, name, number_of_credit) VALUES
+-- ('CSE101', 'Introduction to Computer Science', 3),
+-- ('MAT201', 'Calculus II', 4),
+-- ('PHY301', 'Physics I', 4),
+-- ('ENG101', 'English Literature', 2),
+-- ('HIS202', 'World History', 3);
+-- INSERT INTO course_results (course_id, student_id, semester_number, academic_year) VALUES
+-- ('CSE101', '123459', 1, '2023-2024'),
+-- ('MAT201', '123459', 1, '2023-2024'),
+-- ('PHY301', '123459', 1, '2023-2024'),
+-- ('ENG101', '123459', 1, '2023-2024'),
+-- ('HIS202', '123459', 1, '2023-2024');
+--
+-- INSERT INTO component_scores (course_result_id, name, score_weight, score) VALUES
+-- (1, 'Midterm Exam', 0.4, 8.0),
+-- (1, 'Final Exam', 0.6, 9.0);
+--
+-- INSERT INTO component_scores (course_result_id, name, score_weight, score) VALUES
+-- (2, 'Midterm Exam', 0.3, 7.0),
+-- (2, 'Final Exam', 0.7, 8.0);
+--
+-- INSERT INTO component_scores (course_result_id, name, score_weight, score) VALUES
+-- (3, 'Lab Work', 0.2, 8.0),
+-- (3, 'Midterm Exam', 0.3, 7.0),
+-- (3, 'Final Exam', 0.5, 8.0);
+--
+-- INSERT INTO component_scores (course_result_id, name, score_weight, score) VALUES
+-- (4, 'Midterm Essay', 0.5, 7.0),
+-- (4, 'Final Essay', 0.5, 8.0);
+--
+-- INSERT INTO component_scores (course_result_id, name, score_weight, score) VALUES
+-- (5, 'Quiz', 0.2, 7.0),
+-- (5, 'Midterm Exam', 0.4, 7.0),
+-- (5, 'Final Exam', 0.4, 7.0);
 
 DELETE from component_scores;
 
