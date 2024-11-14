@@ -67,9 +67,9 @@ CREATE table component_scores(
 -- (5, 'Midterm Exam', 0.4, 7.0),
 -- (5, 'Final Exam', 0.4, 7.0);
 
-DELETE from component_scores;
-
-SELECT name, score_weight, score, course_result_id
-FROM component_scores
-WHERE course_result_id = ANY(ARRAY[1, 2, 3, 4, 5]);
+-- DELETE from component_scores;
+--
+-- SELECT name, score_weight, score, course_result_id
+-- FROM component_scores
+-- WHERE course_result_id = ANY(ARRAY[1, 2, 3, 4, 5]);
 
